@@ -19,12 +19,14 @@ function getUrl(username) {
 
 function getLatitude() {
   var origin = 24.6114879;
-  return origin + getRandomInt(1, 5) * 0.0000001;
+  return origin;
+  //return origin + getRandomInt(1, 5) * 0.0000001;
 }
 
 function getLongitude() {
   var origin = 118.0498347;
-  return origin + getRandomInt(1, 5) * 0.0000001;
+  return origin;
+  //return origin + getRandomInt(1, 5) * 0.0000001;
 }
 
 function getAddress() {
