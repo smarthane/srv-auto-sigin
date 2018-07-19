@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>签卡</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="//unpkg.com/mint-ui/lib/style.css">
+    <script type="text/javascript" src="//unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <script type="text/javascript" src="//unpkg.com/mint-ui/lib/index.js"></script>
+    <script type="text/javascript" src="//unpkg.com/vue-resource@1.3.1/dist/vue-resource.min.js"></script>
+  </head>
+  <body>
+   <div id="app">
+    <mt-header title="签卡程序">
+    </mt-header>
+    <mt-field label="手机号:" placeholder="请输入你的手机号" type="tel" v-model="data.phone"></mt-field>
+    <mt-button @click.native="handleClick" type="primary" size="large" :disabled="data.isDisable">签卡</mt-button>
+   </div>
+  </body>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data: function() {
+        var phone = ''
+        if (localStorage) {
+          phone = localStorage.getItem('phone')
+        }
+        return {
+          data: {
+            value: '',
+            phone: phone,
+            isDisable: false
+          }
+        }
+      },
+      methods: {
+        handleClick: function() {
+          let self = this
+          if (self.data.phone === '') {
+            self.$toast('请输入手机号');
+            return
+          }
+          if (localStorage) localStorage.setItem('phone', self.data.phone)
+          self.data.isDisable = true
+          self.$http.post('/api/signin', self.data).then(function(data) {
+            try {
+              var result = JSON.parse(data.body)
+              self.$toast(result.message)
+              self.data.isDisable = false
+            } catch (e) {
+              self.$toast(data.body)
+            }
+          })
+        }
+      }
+    })
+  </script>
+</html>
