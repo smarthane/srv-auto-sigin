@@ -17,17 +17,17 @@ function getUrl(username) {
 }
 
 function getLatitude() {
-  var origin = 24.612064;
-  return origin + getRandomInt(1, 100) * 0.000001;
+  var origin = 24.6114879;
+  return origin + getRandomInt(1, 50) * 0.0000001;
 }
 
 function getLongitude() {
-  var origin = 118.048888;
-  return origin + getRandomInt(1, 100) * 0.000001;
+  var origin = 118.0498347;
+  return origin + getRandomInt(1, 50) * 0.0000001;
 }
 
 function getAddress() {
-  var addrs = ['福建省厦门市集美区集美北大道', '集美北大道靠近集美软件园(地铁站)', '', '福建省厦门市集美区G15(沈海高速)', '集美北大道靠近集美软件园B区B02'];
+  var addrs = ['福建省厦门市集美区集美北大道', '集美北大道靠近集美软件园(地铁站)', '软件园三期B区01', '福建省厦门市集美区G15(沈海高速)', '集美北大道靠近集美软件园B区B02'];
   return addrs[getRandomInt(0, addrs.length - 1)]
 }
 
