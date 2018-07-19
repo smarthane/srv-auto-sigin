@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-    <title>签卡</title>
+    <title>hacker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="//unpkg.com/mint-ui/lib/style.css">
@@ -11,10 +11,10 @@
   </head>
   <body>
    <div id="app">
-    <mt-header title="签卡程序">
+    <mt-header title="hacker">
     </mt-header>
-    <mt-field label="手机号:" placeholder="请输入你的手机号" type="tel" v-model="data.phone"></mt-field>
-    <mt-button @click.native="handleClick" type="primary" size="large" :disabled="data.isDisable">签卡</mt-button>
+    <mt-field label="mobile:" placeholder="Please enter the cell phone number" type="tel" v-model="data.phone"></mt-field>
+    <mt-button @click.native="handleClick" type="primary" size="large" :disabled="data.isDisable">confirm</mt-button>
    </div>
   </body>
   <script type="text/javascript">
@@ -37,7 +37,7 @@
         handleClick: function() {
           let self = this
           if (self.data.phone === '') {
-            self.$toast('请输入手机号');
+            self.$toast('Please enter the cell phone number');
             return
           }
           if (localStorage) localStorage.setItem('phone', self.data.phone)
